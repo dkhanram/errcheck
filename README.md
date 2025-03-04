@@ -2,11 +2,11 @@
 
 errcheck is a program for checking for unchecked errors in Go code.
 
-![errcheck](https://github.com/kisielk/errcheck/workflows/errcheck/badge.svg)
+![errcheck](https://github.com/dkhanram/errcheck/workflows/errcheck/badge.svg)
 
 ## Install
 
-    go install github.com/kisielk/errcheck@latest
+    go install github.com/dkhanram/errcheck@latest
 
 errcheck requires Go 1.18 or newer.
 
@@ -14,7 +14,7 @@ errcheck requires Go 1.18 or newer.
 
 For basic usage, just give the package path of interest as the first argument:
 
-    errcheck github.com/kisielk/errcheck/testdata
+    errcheck github.com/dkhanram/errcheck/testdata
 
 To check all packages beneath the current directory:
 

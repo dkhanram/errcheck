@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kisielk/errcheck/errcheck"
+	"github.com/dkhanram/errcheck/errcheck"
 )
 
 var dotStar = regexp.MustCompile(".*")
@@ -42,7 +42,7 @@ func TestMainFunc(t *testing.T) {
 		bufChannel <- buf.String()
 	}()
 
-	exitCode := mainCmd([]string{"cmd name", "github.com/kisielk/errcheck/testdata"})
+	exitCode := mainCmd([]string{"cmd name", "github.com/dkhanram/errcheck/testdata"})
 
 	w.Close()
 
