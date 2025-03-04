@@ -175,7 +175,7 @@ func checkPaths(c *errcheck.Checker, paths ...string) (errcheck.Result, error) {
 func parseFlags(checker *errcheck.Checker, args []string) ([]string, int) {
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 
-	var checkAsserts, checkBlanks bool
+	var checkAsserts, checkBlanks, disableBuildVCS bool
 
 	flags.BoolVar(&checkBlanks, "blank", false, "if true, check for errors assigned to blank identifier")
 	flags.BoolVar(&checkAsserts, "asserts", false, "if true, check for ignored type assertion results")
@@ -191,6 +191,9 @@ func parseFlags(checker *errcheck.Checker, args []string) ([]string, int) {
 	ignore := ignoreFlag(map[string]*regexp.Regexp{})
 	flags.Var(ignore, "ignore", "[deprecated] comma-separated list of pairs of the form pkg:regex\n"+
 		"            the regex is used to ignore names within pkg.")
+
+	flags.BoolVar(&disableBuildVCS, "disablebuildvcs", false, "if true, build flag query tool will be set to include -buildvcs=false")
+	checker.DisableBuildVCS = disableBuildVCS
 
 	var excludeFile string
 	flags.StringVar(&excludeFile, "exclude", "", "Path to a file containing a list of functions to exclude from checking")

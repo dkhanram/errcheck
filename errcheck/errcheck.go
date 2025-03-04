@@ -152,6 +152,9 @@ type Checker struct {
 
 	// The mod flag for go build.
 	Mod string
+
+	// DisableBuildVCS if set to true, sets buildvcs flag to false
+	DisableBuildVCS bool
 }
 
 // loadPackages is used for testing.
@@ -165,6 +168,9 @@ func (c *Checker) LoadPackages(paths ...string) ([]*packages.Package, error) {
 	buildFlags := []string{fmtTags(c.Tags)}
 	if c.Mod != "" {
 		buildFlags = append(buildFlags, fmt.Sprintf("-mod=%s", c.Mod))
+	}
+	if c.DisableBuildVCS {
+		buildFlags = append(buildFlags, "-buildvcs=false")
 	}
 	cfg := &packages.Config{
 		Mode:       packages.NeedSyntax | packages.NeedTypes | packages.NeedTypesInfo,
